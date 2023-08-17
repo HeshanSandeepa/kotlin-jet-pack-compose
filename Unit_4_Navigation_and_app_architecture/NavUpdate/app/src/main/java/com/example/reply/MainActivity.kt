@@ -29,7 +29,6 @@ import com.example.reply.ui.theme.ReplyTheme
 
 class MainActivity : ComponentActivity() {
 
-
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,20 +37,32 @@ class MainActivity : ComponentActivity() {
             ReplyTheme {
                 Surface {
                     val windowSize = calculateWindowSizeClass(this)
-                    ReplyApp(windowSize = windowSize.widthSizeClass)
+
+                    ReplyApp(
+                        windowSize = windowSize.widthSizeClass,
+                    )
                 }
             }
         }
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, widthDp = 700)
 @Composable
-fun ReplyAppCompactPreview() {
+fun ReplyAppMediumPreview() {
     ReplyTheme {
         Surface {
-            ReplyApp(windowSize = WindowWidthSizeClass.Compact,
-            )
+            ReplyApp(windowSize = WindowWidthSizeClass.Medium)
+        }
+    }
+}
+
+@Preview(showBackground = true, widthDp = 1000)
+@Composable
+fun ReplyAppExpandedPreview() {
+    ReplyTheme {
+        Surface {
+            ReplyApp(windowSize = WindowWidthSizeClass.Expanded)
         }
     }
 }
